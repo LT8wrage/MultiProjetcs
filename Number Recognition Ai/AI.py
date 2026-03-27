@@ -47,8 +47,8 @@ model.evaluate(x_test, y_test)
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f"Test Accuracy: {test_acc*100:.2f}%")
 
-# prédire la première image du test
-img = x_test[0].reshape(1,28,28)   # reshape pour batch size =1
+# prediction of the first image for test
+img = x_test[0].reshape(1,28,28)   # reshape for batch size =1
 prediction = model.predict(img)
 print(f"Predicted label: {np.argmax(prediction)}, True label: {y_test[0]}")
 keras.saving.save_model(model, 'my_model.keras')
