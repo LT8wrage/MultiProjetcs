@@ -1,10 +1,9 @@
-import idx2numpy # convert idx files into numpy arrays (images and labels)
-import os #to set up the base path of the file 
-import keras
-import matplotlib.pyplot as plt #image visualisation
-import tensorflow as tf
-from keras import models, layers
+import os #to set up the base path of the file
+import idx2numpy # convert idx files into numpy arrays (images and labels) 
 import numpy as np
+import keras
+from keras import models, layers
+import tensorflow as tf
 
 
 base_path = os.path.dirname(__file__) #setting the base path to the file's path to avoid further problems regarding the path
