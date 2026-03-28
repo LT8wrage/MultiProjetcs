@@ -1,6 +1,6 @@
 # MultiProjetcs
 - These projects have been coded with python, please proceed to download it ( https://www.python.org/downloads/ ) and download a convinient IDE  ( https://code.visualstudio.com/Download or https://www.jetbrains.com/pycharm/download/ )
-- If you want to access the any of the projects, please intall the requirements via requirements.txt then execute app.py
+- If you want to access the any of the projects, please intall the requirements via the following command: "pip install -r requirements.txt" then execute app.py
 
 ## Including:
 ### Number recognition AI from handwritten number using python:
