@@ -3,7 +3,7 @@ import os #to set up the base path of the file
 import keras
 import matplotlib.pyplot as plt #image visualisation
 import tensorflow as tf
-from tensorflow.keras import models, layers
+from keras import models, layers
 import numpy as np
 
 
