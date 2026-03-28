@@ -1,6 +1,7 @@
 # MultiProjetcs
 Various projects to show off coding skills
 This project has been coded with python, please proceed to download it ( https://www.python.org/downloads/ ) and download a convinient IDE  ( https://code.visualstudio.com/Download or https://www.jetbrains.com/pycharm/download/ )
+If you want to access the projects, please intall the requirements via requirements.txt then execute app.py
 
 ## Including:
 ### Number recognition AI from handwritten number using python:
