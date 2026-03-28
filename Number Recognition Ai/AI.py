@@ -46,9 +46,3 @@ model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test, y_test)
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f"Test Accuracy: {test_acc*100:.2f}%")
-
-# prediction of the first image for test
-img = x_test[0].reshape(1,28,28)   # reshape for batch size =1
-prediction = model.predict(img)
-print(f"Predicted label: {np.argmax(prediction)}, True label: {y_test[0]}")
-keras.saving.save_model(model, 'my_model.keras')
