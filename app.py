@@ -9,7 +9,7 @@ gui.title("Choose the app you want to use")
 
 def NumberRecognition():
     base_path = os.path.dirname(__file__)
-    script_path = os.path.join(base_path, 'DigitCaligraphicalRecognitionAI', 'GUI.py')
+    script_path = os.path.join(base_path, 'Number Recognition AI', 'GUI.py')
     subprocess.Popen([sys.executable, script_path])
 
 button_ai = tk.Button(text='Number recognition AI', width=20, height=3,command=NumberRecognition)
