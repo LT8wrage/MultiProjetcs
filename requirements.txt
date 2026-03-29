@@ -1,0 +1,5 @@
+Pillow
+numpy
+idx2numpy
+tensorflow
+keras
