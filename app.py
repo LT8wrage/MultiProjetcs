@@ -12,11 +12,18 @@ def NumberRecognition():
     script_path = os.path.join(base_path, 'Number Recognition AI', 'GUI.py')
     subprocess.Popen([sys.executable, script_path])
 
+def ThreeDimensionsObjects():
+    base_path = os.path.dirname(__file__)
+    script_path = os.path.join(base_path, '3D_OBJECTS', '3dobjectsrotation.py')
+    subprocess.Popen([sys.executable, script_path])
+
 button_ai = tk.Button(text='Number recognition AI', width=20, height=3,command=NumberRecognition)
+button_3d = tk.Button(text='Number recognition AI', width=20, height=3,command=ThreeDimensionsObjects)
 button_maze = tk.Button(text='Maze solver', width=20, height=3)
 button_penalty = tk.Button(text='Penalty Takes Data Analysis', width=20, height=3)
 
 button_ai.pack(pady=10)
+button_3d.pack(pady=10)
 button_maze.pack(pady=10)
 button_penalty.pack(pady=10)
 
