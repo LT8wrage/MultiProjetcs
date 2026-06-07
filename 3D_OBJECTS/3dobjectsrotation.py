@@ -6,10 +6,20 @@ root.title("3D OBJECTS") #creates gui
 
 canvas = tk.Canvas(root, width=600, height=400)
 canvas.pack() #creates canvas
+
+button_cube = tk.Button(root, text="cube", command=None)
+button_octahedron = tk.Button(root, text="octahedron",command=None)
+button_dodecahedron = tk.Button(root, text="dodecahedron",command=None) #buttons to show geometrical shapes
+
+button_cube.pack()
+button_octahedron.pack()
+button_dodecahedron.pack()
+
 phi = (1 + math.sqrt(5))/2
 inv = 1/phi
-points = {}
 
+points = {}
+lines = []
 
 
 objects = {
@@ -30,36 +40,16 @@ objects = {
 }
 
 
-for p in objects:
+for p in objects["cube"]["points"]:
     points[p] = canvas.create_oval(0,0,0,0)
 
-edges = [
-    ((-1,-1,-1),(1,-1,-1)),
-    ((-1,-1,-1),(-1,1,-1)),
-    ((-1,-1,-1),(-1,-1,1)),
-
-    ((1,1,1),(-1,1,1)),
-    ((1,1,1),(1,-1,1)),
-    ((1,1,1),(1,1,-1)),
-
-    ((-1,1,1),(-1,-1,1)),
-    ((-1,1,1),(-1,1,-1)),
-
-    ((1,-1,-1),(1,-1,1)),
-    ((1,-1,1),(-1,-1,1)),
-
-    ((1,1,-1),(1,-1,-1)),
-    ((1,1,-1),(-1,1,-1)),
-]
-lines = []
-
-for _ in edges:
+for edge in objects["cube"]["edges"]:
     lines.append(canvas.create_line(0,0,0,0))
 
 def update(_=None):
     pitch = math.radians(sliderPITCH.get())
     yaw = math.radians(sliderYAW.get())
-    roll = math.radians(sliderROLL.get())#takes value from sliders
+    roll = math.radians(sliderROLL.get()) #takes value from sliders
 
     transformed = {}
 
@@ -77,7 +67,7 @@ def update(_=None):
         )   # adjusts the coordinates to the canvas
         transformed[(x,y,z)] = (x_2d, y_2d)
 
-    for i, (a, b) in enumerate(edges):
+    for i, (a, b) in enumerate(objects["cube"]["edges"]):
         x1, y1 = transformed[a]
         x2, y2 = transformed[b]
 
@@ -93,7 +83,5 @@ sliderROLL = tk.Scale(root,from_=0,to=360,orient="horizontal",command=update) # 
 sliderPITCH.pack()
 sliderYAW.pack()
 sliderROLL.pack()
-
-root.mainloop() #runs the gui or idk
 
 root.mainloop() #runs the gui or idk
