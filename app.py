@@ -4,7 +4,6 @@ import sys
 import os
 
 gui = tk.Tk()
-gui.geometry('250x250')
 gui.title("Choose the app you want to use")
 
 def NumberRecognition():
