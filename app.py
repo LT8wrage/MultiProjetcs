@@ -18,7 +18,7 @@ def ThreeDimensionsObjects():
     subprocess.Popen([sys.executable, script_path])
 
 button_ai = tk.Button(text='Number recognition AI', width=20, height=3,command=NumberRecognition)
-button_3d = tk.Button(text='Number recognition AI', width=20, height=3,command=ThreeDimensionsObjects)
+button_3d = tk.Button(text='3D objects rotation', width=20, height=3,command=ThreeDimensionsObjects)
 button_maze = tk.Button(text='Maze solver', width=20, height=3)
 button_penalty = tk.Button(text='Penalty Takes Data Analysis', width=20, height=3)
 
