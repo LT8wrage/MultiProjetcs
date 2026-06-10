@@ -6,14 +6,13 @@ import os
 gui = tk.Tk()
 gui.geometry("500x500")
 gui.title("Choose the app you want to use")
+base_path = os.path.dirname(__file__)
 
-def NumberRecognition():
-    base_path = os.path.dirname(__file__)
+def NumberRecognition(): 
     script_path = os.path.join(base_path, 'Number Recognition AI', 'GUI.py')
     subprocess.Popen([sys.executable, script_path])
 
 def ThreeDimensionsObjects():
-    base_path = os.path.dirname(__file__)
     script_path = os.path.join(base_path, '3D_OBJECTS', '3dobjectsrotation.py')
     subprocess.Popen([sys.executable, script_path])
 
@@ -28,3 +27,4 @@ button_maze.pack(pady=10)
 button_penalty.pack(pady=10)
 
 gui.mainloop()
+
