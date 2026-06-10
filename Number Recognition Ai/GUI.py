@@ -2,8 +2,13 @@ import tkinter as tk
 from PIL import Image, ImageDraw
 import numpy as np
 import keras
+import subprocess
+import sys
+import os
 
-model = keras.saving.load_model('my_model.keras')
+base_path = os.path.dirname(__file__)
+model_path = os.path.join(base_path, 'my_model.keras')
+model = keras.saving.load_model(model_path)
 
 pil_image = Image.new("RGB", (400, 400), "BLACK")
 pil_draw = ImageDraw.Draw(pil_image)
@@ -13,6 +18,12 @@ gui.title("Digit Recognition")
 gui.geometry("500x600")
 
 title = tk.Label(gui, text='Draw a number')
+
+def train():
+    base_path = os.path.dirname(__file__)
+    script_path = os.path.join(base_path, 'AI.py')
+    subprocess.Popen([sys.executable, script_path])
+
 
 def draw(event):
     x, y = event.x, event.y
@@ -26,7 +37,6 @@ def clear():
 
 def submit():
     small_image = pil_image.resize((28, 28))
-    small_image.save('28x28.png')
     final_input = (np.array(small_image.convert('L')).astype('float32') / 255.0).reshape(1, 28, 28, 1)
     
     prediction = model.predict(final_input)
@@ -38,6 +48,7 @@ def submit():
 canvas = tk.Canvas(gui, width=400, height=400, bg="black")
 Submit_btn = tk.Button(gui, text="Submit", width=10, height=2, command=submit)
 Clear_btn = tk.Button(gui, text="Clear", width=10, height=2, command=clear)
+Train_btn = tk.Button(gui, text="Train AI", width=10, height=2, command=train)
 
 
 
@@ -46,6 +57,7 @@ Clear_btn = tk.Button(gui, text="Clear", width=10, height=2, command=clear)
 canvas.bind("<B1-Motion>", draw)
 
 title.pack(pady=30)
+Train_btn.pack(ipadx=100)
 canvas.pack(pady=10)
 Submit_btn.pack(ipadx=100)
 Clear_btn.pack()
