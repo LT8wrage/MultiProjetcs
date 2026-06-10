@@ -3,3 +3,4 @@ numpy
 idx2numpy
 tensorflow
 keras
+torchvision
