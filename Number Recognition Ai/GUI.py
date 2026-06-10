@@ -6,21 +6,19 @@ import subprocess
 import sys
 import os
 
-base_path = os.path.dirname(__file__)
-model_path = os.path.join(base_path, 'my_model.keras')
-model = keras.saving.load_model(model_path)
 
 pil_image = Image.new("RGB", (400, 400), "BLACK")
 pil_draw = ImageDraw.Draw(pil_image)
 
+base_path = os.path.dirname(__file__)
+
 gui = tk.Tk()
 gui.title("Digit Recognition")
-gui.geometry("500x600")
+gui.geometry("500x650")
 
 title = tk.Label(gui, text='Draw a number')
 
 def train():
-    base_path = os.path.dirname(__file__)
     script_path = os.path.join(base_path, 'AI.py')
     subprocess.Popen([sys.executable, script_path])
 
@@ -36,13 +34,21 @@ def clear():
     title.config(text="Draw a number")
 
 def submit():
-    small_image = pil_image.resize((28, 28))
-    final_input = (np.array(small_image.convert('L')).astype('float32') / 255.0).reshape(1, 28, 28, 1)
     
-    prediction = model.predict(final_input)
-    digit = np.argmax(prediction)
-    title.config(text=f"Your digit is a : {digit}")
+    model_path = os.path.join(base_path, 'my_model.keras')
 
+    if os.path.exists(model_path):
+        model = keras.saving.load_model(model_path)
+        small_image = pil_image.resize((28, 28))
+        final_input = (np.array(small_image.convert('L')).astype('float32') / 255.0).reshape(1, 28, 28, 1)
+        prediction = model.predict(final_input)
+        digit = np.argmax(prediction)
+        title.config(text=f"Your digit is a : {digit}")
+    else:
+        title.config(text=f"You should train the ai first")
+
+    
+    
 
 
 canvas = tk.Canvas(gui, width=400, height=400, bg="black")
@@ -62,4 +68,3 @@ canvas.pack(pady=10)
 Submit_btn.pack(ipadx=100)
 Clear_btn.pack()
 gui.mainloop()
-
